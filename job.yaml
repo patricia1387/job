@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jb
+spec:
+  parallelism: 1    
+  completions: 1    
+  template:         
+    metadata:
+      name: jb
+    spec:
+      containers:
+      - name: jb
+        image: python
+        command: ["python3.6",  "app.py"]
+      restartPolicy: Never
+   

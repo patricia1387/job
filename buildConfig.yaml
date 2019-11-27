@@ -1,0 +1,32 @@
+kind: BuildConfig
+apiVersion: v1
+metadata:
+  name: job-example-build 
+spec:
+  output: 
+    to:
+      kind: ImageStreamTag
+      name: 'job-example-build:latest'
+  runPolicy: Serial 
+  triggers: 
+    -
+      type: GitHub
+      github:
+        secret: af8671b091b712ec
+    - type: Generic
+      generic:
+        secret: ffe7b2d305990ff4
+    -
+      type: ImageChange
+  source: 
+    git:
+      ref: master
+      uri: 'https://github.com/patricia1387/job'
+  strategy: 
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'python:3.6'
+        namespace: openshift
+  
