@@ -10,16 +10,6 @@ spec:
       kind: ImageStreamTag
       name: 'job-example:latest'
   runPolicy: Serial 
-  triggers: 
-    -
-      type: GitHub
-      github:
-        secret: af8671b091b712ec
-    - type: Generic
-      generic:
-        secret: ffe7b2d305990ff4
-    -
-      type: ImageChange
   source: 
     git:
       ref: master
